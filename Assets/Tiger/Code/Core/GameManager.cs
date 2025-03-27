@@ -1,5 +1,13 @@
+using UnityEngine;
+
 namespace Tiger {
-    public class GameManager : PersistentSingleton<GameManager> {
+    public class GameManager : Singleton<GameManager> {
         
+        [SerializeField] private SceneLoaderController _sceneLoader;
+
+        public void RequestSceneLoad(string sceneName) {
+            _sceneLoader.LoadSceneGroup(sceneName);
+        }
+
     }
 }
