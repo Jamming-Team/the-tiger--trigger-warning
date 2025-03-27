@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Tiger {
@@ -9,5 +10,10 @@ namespace Tiger {
             _sceneLoader.LoadSceneGroup(sceneName);
         }
 
+        private void Update() {
+            if (Input.GetKeyDown(KeyCode.Escape)) {
+                RequestSceneLoad("MainMenu");
+            }
+        }
     }
 }
