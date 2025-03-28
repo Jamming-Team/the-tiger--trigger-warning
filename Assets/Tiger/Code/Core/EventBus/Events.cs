@@ -13,6 +13,16 @@ namespace Tiger {
         public UIButtonTypes buttonType;
     }
 
+    public enum UISliders {
+        SfxVolume,
+        MusicVolume,
+    }
+    
+    public struct UISliderChanged : IEvent {
+        public UISliders sliderType;
+        public float value;
+    }
+
     // And he uses struct bcs:
     // "Structs are allocated on a stack, not a heap so they put way less pressure on the garbage collector"
     // Pretty cool
