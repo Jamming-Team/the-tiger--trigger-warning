@@ -5,6 +5,7 @@ namespace Tiger {
     public enum UIButtonTypes {
         Play,
         Settings,
+        Back,
         Pause
     }
 

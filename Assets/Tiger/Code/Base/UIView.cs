@@ -4,22 +4,34 @@ using UnityEngine;
 
 namespace Tiger {
     public class UIView : MonoBehaviour {
-        [SerializeField] List<UIViewButton> _buttons = new();
+        [SerializeField] List<UIViewButton> _buttons;
 
         EventBinding<UIButtonPressed> testEventBinding;
 
-        void OnEnable() {
-            _buttons.ForEach(x => x.buttonReference.onClick.AddListener(delegate {
-                PressUIButton(x.buttonType);
-            }));
-        }
+        // void Start() {
+        //     _buttons.ForEach(x => x.buttonReference.onClick.AddListener(delegate {
+        //         RaiseUIButtonEvent(x.buttonType);
+        //     }));
+        //     
+        //     testEventBinding = new EventBinding<UIButtonPressed>(Test);
+        //     EventBus<UIButtonPressed>.Register(testEventBinding);
+        // }
 
         void Start() {
+            _buttons.ForEach(x => x.buttonReference.onClick.AddListener(delegate {
+                RaiseUIButtonEvent(x.buttonType);
+            }));
+            
             testEventBinding = new EventBinding<UIButtonPressed>(Test);
             EventBus<UIButtonPressed>.Register(testEventBinding);
         }
 
-        void OnDisable() {
+
+        void OnDestroy() {
+            _buttons.ForEach(x => x.buttonReference.onClick.RemoveListener(delegate {
+                RaiseUIButtonEvent(x.buttonType);
+            }));
+            
             EventBus<UIButtonPressed>.Deregister(testEventBinding);
         }
 
@@ -27,7 +39,8 @@ namespace Tiger {
             Debug.Log($"UIViewButton: {data.buttonType}");
         }
 
-        public void PressUIButton(UIButtonTypes buttonType) {
+        private void RaiseUIButtonEvent(UIButtonTypes buttonType) {
+            Debug.Log($"UIViewButton TRUE: {buttonType}");
             EventBus<UIButtonPressed>.Raise(new UIButtonPressed {
                 buttonType = buttonType,
             });
