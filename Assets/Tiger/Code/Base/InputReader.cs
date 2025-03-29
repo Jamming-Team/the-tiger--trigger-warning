@@ -20,6 +20,8 @@ namespace Tiger {
         
         TigerInputActions _inputActions;
 
+
+
         
         public void EnablePlayerActions()
         {
@@ -51,6 +53,11 @@ namespace Tiger {
         }
 
         public void OnPause(InputAction.CallbackContext context) {
+            if (context.phase == InputActionPhase.Performed) {
+                EventBus<UIButtonPressed>.Raise(new UIButtonPressed {
+                    buttonType = UIButtonTypes.Pause,
+                });
+            }
             // throw new System.NotImplementedException();
         }
 

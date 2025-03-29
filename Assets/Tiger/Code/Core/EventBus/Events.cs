@@ -34,7 +34,10 @@ namespace Tiger {
         Play,
         Settings,
         Back,
-        Pause
+        Pause,
+        Resume,
+        Restart,
+        Exit,
     }
 
     public enum UITransitionMessageTypes {

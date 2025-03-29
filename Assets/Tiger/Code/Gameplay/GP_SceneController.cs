@@ -4,6 +4,8 @@ namespace Tiger {
     public class GP_SceneController : SceneController, IVisitable {
         [HideInInspector]
         public DataSO.GameData data { get; set; }
+
+        public bool freeActIsInAction => _stateMachine.currentState is Gameplay.GP_ActionState;
         
         protected override void Start() {
 
