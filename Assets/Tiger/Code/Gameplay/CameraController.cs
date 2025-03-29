@@ -36,14 +36,22 @@ namespace Tiger {
             }
         }
 
-        private void DetectClick() {
+        void DetectClick() {
             if (Input.GetMouseButtonDown(0)) {
                 Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity,_layerInteractive)) {
-                    Debug.Log(hit.collider.gameObject.name);
+                if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, _layerInteractive)) {
+                    if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Interactive"))
+                    {
+                        var clickableObject = hit.collider.gameObject.GetComponent<ClickableObject>();
+                        if (clickableObject != null)
+                        {
+                            clickableObject.ClickTrigger();
+                        }
+                    }
                 }
             }
         }
+
 
         public void Accept(IVisitor visitor) {
             visitor.Visit(this);
