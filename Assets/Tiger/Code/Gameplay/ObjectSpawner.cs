@@ -5,10 +5,11 @@ namespace Tiger
 {
     public class ObjectSpawner : MonoBehaviour
     {
-        private float _distanceBetweenObjects = 6f;
         [SerializeField] private GameObject usualItemPrefab;
         [SerializeField] private GameObject mimicPrefab;
         [SerializeField] private GameObject spawnArea;
+        [SerializeField] private LayerMask spawnCheckLayerMask;
+        [SerializeField] private float spawnCheckRadius = 1f;
         
         // START for tests
         void Update()
@@ -67,7 +68,7 @@ namespace Tiger
             {
                 Vector3 randomPosition = GenerateRandomPosition(min, max, positionY);
     
-                if (CheckValidDistance(randomPosition, positions))
+                if (CheckSpaceForSpawn(randomPosition))
                 {
                     positions.Add(randomPosition);
                     spawnedCount++;
@@ -84,8 +85,8 @@ namespace Tiger
             Bounds bounds = spawnArea.GetComponent<Renderer>().bounds;
             float positionY = bounds.max.y;
 
-            Vector3 min = bounds.min + Vector3.one * _distanceBetweenObjects;
-            Vector3 max = bounds.max - Vector3.one * _distanceBetweenObjects;
+            Vector3 min = bounds.min + Vector3.one * spawnCheckRadius;
+            Vector3 max = bounds.max - Vector3.one * spawnCheckRadius;
 
             return (positionY, min, max);
         }
@@ -97,14 +98,9 @@ namespace Tiger
             return new Vector3(x, positionY, z);
         }
         
-        private bool CheckValidDistance(Vector3 newPosition, List<Vector3> existingPositions)
+        private bool CheckSpaceForSpawn(Vector3 position)
         {
-            foreach (Vector3 position in existingPositions)
-            {
-                if (Vector3.Distance(position, newPosition) < _distanceBetweenObjects)
-                    return false;
-            }
-            return true;
+            return !Physics.CheckSphere(position, spawnCheckRadius, spawnCheckLayerMask);
         }
     }
 }
