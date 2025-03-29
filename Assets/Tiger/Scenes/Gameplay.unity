@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 688847379}
   - component: {fileID: 688847378}
   - component: {fileID: 688847377}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -601,9 +601,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputReader: {fileID: 11400000, guid: 010d02a45c77e6c3eb61e0be387a8768, type: 2}
-  _cinemachineCamera: {fileID: 0}
   _orbitalFollow: {fileID: 1055208377}
-  _mouseSensitivity: {x: 400, y: 200}
+  _camera: {fileID: 1564535275}
+  _layerInteractive:
+    serializedVersion: 2
+    m_Bits: 4096
 --- !u!4 &1440550447
 Transform:
   m_ObjectHideFlags: 0
