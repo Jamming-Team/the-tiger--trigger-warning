@@ -26,3 +26,6 @@ MonoBehaviour:
       crossFadeTime: 3
   game:
     test: Tis WORKING!
+    camera:
+      verticalAxisConstraint: {x: 10, y: 50}
+      rotationSensitivity: {x: 300, y: 200}

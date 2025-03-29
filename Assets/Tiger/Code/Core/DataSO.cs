@@ -20,6 +20,13 @@ namespace Tiger {
         [Serializable]
         public class GameData {
             public string test = "Tis WORKING!";
+            public CameraData camera;
+        }
+
+        [Serializable]
+        public class CameraData {
+            public Vector2 verticalAxisConstraint = new Vector2(10f, 50f);
+            public Vector2 rotationSensitivity = new Vector2(400f, 200f);
         }
         
         [Serializable]

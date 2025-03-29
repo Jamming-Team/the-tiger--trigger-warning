@@ -55,5 +55,9 @@ namespace Tiger {
         public void Visit(AudioManager requester) {
             requester.data = _dataSO.audio;
         }
+        
+        public void Visit(CameraController requester) {
+            requester.data = _dataSO.game.camera;
+        }
     }
 }
