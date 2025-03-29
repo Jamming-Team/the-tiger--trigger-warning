@@ -21,6 +21,20 @@ namespace Tiger
         }
         // END for tests
 
+        void DestroyAllObjects()
+        {
+            int prefabLayer = objectPrefab.layer;
+
+            // check all objects
+            foreach (GameObject obj in FindObjectsOfType<GameObject>())
+            {
+                if (obj.layer == prefabLayer)
+                {
+                    Destroy(obj);
+                }
+            }
+        }
+
         void SpawnObjects(int numberOfObjects, float distanceBetweenObjects)
         {
             if (!spawnArea) return;
