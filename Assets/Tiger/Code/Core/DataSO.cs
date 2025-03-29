@@ -9,6 +9,7 @@ namespace Tiger {
     public class DataSO : ScriptableObject {
         public AudioData audio;
         public GameData game;
+        public UIData ui;
 
         [Serializable]
         public class AudioData {
@@ -21,8 +22,17 @@ namespace Tiger {
         public class GameData {
             public string test = "Tis WORKING!";
             public CameraData camera;
+
+            [SerializedDictionary("Type", "Timings")]
+            public SerializedDictionary<TransitionType, List<int>> transitions;
         }
 
+        [Serializable]
+        public class UIData {
+            [SerializedDictionary("Type", "Trs msg")]
+            public SerializedDictionary<UITransitionMessageTypes, TransitionMessage> transitionMsgs;
+        }
+        
         [Serializable]
         public class CameraData {
             public Vector2 verticalAxisConstraint = new Vector2(10f, 50f);
@@ -42,7 +52,14 @@ namespace Tiger {
             public SerializedDictionary<MusicBundleType, MusicBundle> bundles;
             public float crossFadeTime = 2.0f;
         }
+
+        [Serializable]
+        public class TransitionMessage {
+            public string message;
+            public Color textColor;
+        }
     }
     
     public enum MusicBundleType { MainMenu, Gameplay }
+    public enum TransitionType {Intro, Correct, Wrong, Repeat}
 }

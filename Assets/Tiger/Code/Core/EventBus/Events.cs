@@ -20,7 +20,10 @@ namespace Tiger {
     public struct FadeRequest : IEvent {
         public bool shouldFade;
     }
-    
+
+    public struct UISetTransitionMsg : IEvent {
+        public UITransitionMessageTypes type;
+    }
     
     public enum UISliders {
         SfxVolume,
@@ -32,6 +35,14 @@ namespace Tiger {
         Settings,
         Back,
         Pause
+    }
+
+    public enum UITransitionMessageTypes {
+        None,
+        Correct,
+        Wrong,
+        Remember,
+        Repeat
     }
     
     // And he uses struct bcs:

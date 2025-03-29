@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace Tiger {
     public class SceneController : MonoBehaviour {
-        [SerializeField] StateMachine _stateMachine;
+        [SerializeField] protected StateMachine _stateMachine;
 
-        void Start() {
+        protected virtual void Start() {
             _stateMachine.Init(this);
         }
     }

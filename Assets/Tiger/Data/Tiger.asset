@@ -29,3 +29,36 @@ MonoBehaviour:
     camera:
       verticalAxisConstraint: {x: 10, y: 50}
       rotationSensitivity: {x: 300, y: 200}
+    transitions:
+      _serializedList:
+      - Key: 0
+        Value: d0070000d0070000d0070000d0070000d0070000
+      - Key: 1
+        Value: d0070000d0070000d0070000
+      - Key: 2
+        Value: d0070000d0070000
+      - Key: 3
+        Value: d0070000d0070000d0070000
+  ui:
+    transitionMsgs:
+      _serializedList:
+      - Key: 0
+        Value:
+          message: 
+          textColor: {r: 0, g: 0, b: 0, a: 0}
+      - Key: 1
+        Value:
+          message: CORRECT!
+          textColor: {r: 0.4727986, g: 0.8093101, b: 0.41108683, a: 0}
+      - Key: 2
+        Value:
+          message: WRONG!
+          textColor: {r: 0.6792453, g: 0.33641866, b: 0.33641866, a: 0}
+      - Key: 3
+        Value:
+          message: REMEMBER
+          textColor: {r: 0.6341822, g: 0.41340345, b: 0.7747987, a: 0}
+      - Key: 4
+        Value:
+          message: REPEAT
+          textColor: {r: 0.684465, g: 0.7021703, b: 0.39290234, a: 0}

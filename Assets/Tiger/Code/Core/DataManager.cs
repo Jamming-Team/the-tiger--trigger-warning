@@ -59,5 +59,9 @@ namespace Tiger {
         public void Visit(CameraController requester) {
             requester.data = _dataSO.game.camera;
         }
+        
+        public void Visit(NotifierView requester) {
+            requester.data = _dataSO.ui;
+        }
     }
 }
