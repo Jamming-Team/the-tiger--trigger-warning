@@ -2,6 +2,8 @@ using UnityEngine;
 
 namespace Tiger {
     public class Hero : MonoBehaviour {
+        [SerializeField] InputReader _inputReader;
+        
         int health;
         int mana;
 
@@ -14,6 +16,7 @@ namespace Tiger {
             
             playerEventBinding = new EventBinding<PlayerEvent>(HandlePlayerEvent);
             EventBus<PlayerEvent>.Register(playerEventBinding);
+            _inputReader.EnablePlayerActions();
         }
 
         void OnDisable() {
@@ -31,6 +34,14 @@ namespace Tiger {
                     health = this.health,
                     mana = this.mana,
                 }); 
+            }
+
+            if (_inputReader.interactIsBeingPressed) {
+                Debug.Log("Interact");
+            }
+
+            if (_inputReader.rotateIsBeingPressed) {
+                Debug.Log("Rotate");
             }
         }
 

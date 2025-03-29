@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace Tiger {
-    [CreateAssetMenu(fileName = "Tiger", menuName = "Tiger", order = 0)]
+    [CreateAssetMenu(fileName = "Data", menuName = "Tiger/Data", order = 0)]
     public class DataSO : ScriptableObject {
         public AudioData audio;
         public GameData game;
