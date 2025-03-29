@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace Tiger {
     public class SceneLoaderController : MonoBehaviour {
-        [SerializeField] SceneLoaderView _view;
+        // [SerializeField] SceneLoaderView _view;
         readonly SceneLoaderModel _model = new();
         float _progress = 0;
         bool _isLoading = false;

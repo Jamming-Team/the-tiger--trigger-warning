@@ -8,7 +8,8 @@ namespace Tiger {
         
         DataManager _dataManager;
 
-        void Awake() {
+        protected override void Awake() {
+            base.Awake();
             Application.targetFrameRate = 60;
             _dataManager = new DataManager(_dataSO);
         }
@@ -19,7 +20,9 @@ namespace Tiger {
         }
 
         public void RequestSceneLoad(string sceneName) {
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
             _sceneLoader.LoadSceneGroup(sceneName);
+#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
         }
 
         public void RequestData(IVisitable requester) {
