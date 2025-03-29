@@ -66,7 +66,9 @@ namespace Tiger {
         public void CheckForCrossFade() {
             // HandleCrossFade();
 
-            if (_current.clip.length - _current.time <= _crossFadeTime) PlayNextTrack();
+            if (!_current.clip) return;
+            
+            if ( _current.clip.length - _current.time <= _crossFadeTime) PlayNextTrack();
 
             // if (current && !current.isPlaying && playlist.Count > 0) PlayNextTrack();
         }

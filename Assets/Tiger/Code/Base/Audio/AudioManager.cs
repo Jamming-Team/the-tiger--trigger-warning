@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -12,6 +10,9 @@ namespace Tiger {
         
         [SerializeField] private AudioMixer _mixer;
         [SerializeField] AudioSource[] _musicSources = new AudioSource[2];
+        [SerializeField] SoundData _testSound;
+        [SerializeField] SoundManager _soundModel;
+
 
         [HideInInspector]
         public AudioData data { get; set; }
@@ -41,15 +42,29 @@ namespace Tiger {
 
         void Update() {
             _music.CheckForCrossFade();
+
+            if (Input.GetKeyDown(KeyCode.Space)) {
+                PlaySound(_testSound);
+            }
         }
+
+        public void PlaySound(SoundData soundData) {
+            _soundModel.CreateSoundBuilder()
+                .WithRandomPitch()
+                .WithPosition(transform.position)
+                .Play(soundData);
+        }
+        
+        void AdjustMixerVolume() {
+            _mixer.SetFloat(SFX_VOLUME_NAME, data.sfxVolume.ToLogarithmicVolume());
+            _mixer.SetFloat(MUSIC_VOLUME_NAME, data.musicVolume.ToLogarithmicVolume());
+        }
+        
 
         public void Accept(IVisitor visitor) {
             visitor.Visit(this);
         }
 
-        void AdjustMixerVolume() {
-            _mixer.SetFloat(SFX_VOLUME_NAME, data.sfxVolume.ToLogarithmicVolume());
-            _mixer.SetFloat(MUSIC_VOLUME_NAME, data.musicVolume.ToLogarithmicVolume());
-        }
+
     }
 }

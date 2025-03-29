@@ -22,7 +22,7 @@ MonoBehaviour:
           Value:
             audioClips:
             - {fileID: 8300000, guid: d91436da2a88fed0d905151b7b5ddea3, type: 3}
-            shouldLoopFirstClip: 1
+            shouldLoopFirstClip: 0
       crossFadeTime: 3
   game:
     test: Tis WORKING!
