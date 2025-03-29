@@ -8,7 +8,7 @@ using static Tiger.DataSO;
 namespace Tiger {
     public class AudioManager : MonoBehaviour, IVisitable {
         const string MUSIC_VOLUME_NAME = "MusicVolume";
-        const string SFX_VOLUME_NAME = "SFXVolume";
+        const string SFX_VOLUME_NAME = "SfxVolume";
         
         [SerializeField] private AudioMixer _mixer;
         [SerializeField] AudioSource[] _musicSources = new AudioSource[2];
@@ -31,6 +31,10 @@ namespace Tiger {
             
             _music.LoadBundle(MusicBundleType.MainMenu);
             _music.PlayNextTrack();
+        }
+
+        void Update() {
+            _music.CheckForCrossFade();
         }
 
         public void Accept(IVisitor visitor) {

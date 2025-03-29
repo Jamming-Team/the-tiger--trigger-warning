@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using AYellowpaper.SerializedCollections;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -30,7 +31,8 @@ namespace Tiger {
         [Serializable]
         public class MusicData {
             // public List<AudioClip> audioClips;
-            public Dictionary<MusicBundleType, MusicBundle> bundles;
+            [SerializedDictionary("Type", "Bundle")]
+            public SerializedDictionary<MusicBundleType, MusicBundle> bundles;
             public float crossFadeTime = 2.0f;
         }
     }

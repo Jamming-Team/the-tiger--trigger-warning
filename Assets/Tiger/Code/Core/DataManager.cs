@@ -40,5 +40,10 @@ namespace Tiger {
         {
             requester.data = _dataSO.game;
         }
+        
+        public void Visit(AudioManager requester)
+        {
+            requester.data = _dataSO.audio;
+        }
     }
 }

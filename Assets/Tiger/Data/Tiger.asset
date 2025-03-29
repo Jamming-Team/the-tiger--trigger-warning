@@ -12,8 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0e149a6cfe0400a96a72c698d3be5a4, type: 3}
   m_Name: Tiger
   m_EditorClassIdentifier: 
-  system:
-    musicVolume: 0
-    sfxVolume: 0
+  audio:
+    musicVolume: 0.5
+    sfxVolume: 0.5
+    music:
+      bundles:
+        _serializedList:
+        - Key: 0
+          Value:
+            audioClips:
+            - {fileID: 8300000, guid: d91436da2a88fed0d905151b7b5ddea3, type: 3}
+            shouldLoopFirstClip: 1
+      crossFadeTime: 3
   game:
     test: Tis WORKING!

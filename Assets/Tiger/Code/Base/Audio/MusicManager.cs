@@ -133,8 +133,8 @@ namespace Tiger {
         IEnumerator HandleCrossFadeExo() {
             _fading = 0.001f;
 
-            while (_fading <= 0f) {
-                _fading += .01f;
+            while (_fading > 0f) {
+                // _fading += .01f;
 
                 _fading += Time.deltaTime;
 
