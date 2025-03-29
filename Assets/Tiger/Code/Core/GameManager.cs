@@ -28,5 +28,27 @@ namespace Tiger {
         public void RequestData(IVisitable requester) {
             _dataManager.TrySupply(requester);
         }
+
+        Vector2 _cursorPos = Vector2.zero;
+        public void SetCursorStatus(CursorStatusTypes type) {
+            switch (type) {
+                case CursorStatusTypes.Normal: {
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+                    
+                    break;
+                }
+                case CursorStatusTypes.Hidden: {
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
+                    break;
+                }
+            }
+        }
+        
+        public enum CursorStatusTypes {
+            Normal,
+            Hidden
+        }
     }
 }
