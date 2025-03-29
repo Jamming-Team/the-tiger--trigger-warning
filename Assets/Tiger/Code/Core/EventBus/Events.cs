@@ -22,6 +22,8 @@ namespace Tiger {
         public UISliders sliderType;
         public float value;
     }
+    
+    public struct DataChanged : IEvent {}
 
     // And he uses struct bcs:
     // "Structs are allocated on a stack, not a heap so they put way less pressure on the garbage collector"

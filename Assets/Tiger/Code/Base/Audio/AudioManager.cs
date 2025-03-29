@@ -18,6 +18,9 @@ namespace Tiger {
         
         MusicManager _music;
         
+        EventBinding<DataChanged> _DataChangedBinding;
+
+        
         void Start() {
             GameManager.Instance.RequestData(this);
 
@@ -31,6 +34,9 @@ namespace Tiger {
             
             _music.LoadBundle(MusicBundleType.MainMenu);
             _music.PlayNextTrack();
+            
+            _DataChangedBinding = new EventBinding<DataChanged>(AdjustMixerVolume);
+            EventBus<DataChanged>.Register(_DataChangedBinding);
         }
 
         void Update() {
