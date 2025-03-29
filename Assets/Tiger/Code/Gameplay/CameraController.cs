@@ -6,7 +6,9 @@ namespace Tiger {
     public class CameraController : MonoBehaviour, IVisitable {
         [SerializeField] InputReader _inputReader;
         [SerializeField] CinemachineOrbitalFollow _orbitalFollow;
-
+        [SerializeField] Camera _camera;
+        [SerializeField] LayerMask _layerInteractive;
+        
         public DataSO.CameraData data { get; set; }
 
         void Start() {
@@ -14,7 +16,14 @@ namespace Tiger {
             GameManager.Instance.RequestData(this);
         }
 
-        void Update() {
+        void Update()
+        {
+            OnCameraRotation();
+            DetectClick();
+        }
+
+        void OnCameraRotation()
+        {
             if (_inputReader.rotateIsBeingPressed) {
                 var deltaMove = _inputReader.mouseDelta * data.rotationSensitivity.Multiply(y: -1) * Time.deltaTime;
                 _orbitalFollow.HorizontalAxis.Value += deltaMove.x;
@@ -26,6 +35,23 @@ namespace Tiger {
                 GameManager.Instance.SetCursorStatus(GameManager.CursorStatusTypes.Normal);
             }
         }
+
+        void DetectClick() {
+            if (Input.GetMouseButtonDown(0)) {
+                Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, _layerInteractive)) {
+                    if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Interactive"))
+                    {
+                        var clickableObject = hit.collider.gameObject.GetComponent<ClickableObject>();
+                        if (clickableObject != null)
+                        {
+                            clickableObject.ClickTrigger();
+                        }
+                    }
+                }
+            }
+        }
+
 
         public void Accept(IVisitor visitor) {
             visitor.Visit(this);
