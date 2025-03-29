@@ -5,25 +5,34 @@ namespace Tiger
 {
     public class ObjectSpawner : MonoBehaviour
     {
-        [SerializeField]
-        private GameObject objectPrefab;
-        
-        [SerializeField]
-        private GameObject spawnArea;
+        private float _distanceBetweenObjects = 6f;
+        [SerializeField] private GameObject usualItemPrefab;
+        [SerializeField] private GameObject mimicPrefab;
+        [SerializeField] private GameObject spawnArea;
         
         // START for tests
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
-                SpawnObjects(5, 2);
+                SpawnUsualItems(5);
+            }
+            
+            if (Input.GetKeyDown(KeyCode.RightShift))
+            {
+                SpawnMimic();
+            }
+            
+            if (Input.GetKeyDown(KeyCode.LeftControl))
+            {
+                DestroyAllObjects();
             }
         }
         // END for tests
 
         void DestroyAllObjects()
         {
-            int prefabLayer = objectPrefab.layer;
+            int prefabLayer = usualItemPrefab.layer;
 
             // check all objects
             foreach (GameObject obj in FindObjectsOfType<GameObject>())
@@ -35,22 +44,30 @@ namespace Tiger
             }
         }
 
-        void SpawnObjects(int numberOfObjects, float distanceBetweenObjects)
+        void SpawnUsualItems(int count)
         {
-            if (!spawnArea) return;
+            SpawnObjects(count, usualItemPrefab);
+        }
+        
+        void SpawnMimic()
+        {
+            SpawnObjects(1, mimicPrefab);
+        }
 
+        void SpawnObjects(int objectCount, GameObject prefab)
+        {
             List<Vector3> positions = new();
-            var (positionY, min, max) = GetSpawnData(distanceBetweenObjects);
+            var (positionY, min, max) = GetSpawnData();
 
             int spawnedCount = 0;
             int attempts = 0;
-            int maxAttempts = numberOfObjects * 10;
+            int maxAttempts = objectCount * 10;
             
-            while (spawnedCount < numberOfObjects && attempts < maxAttempts)
+            while (spawnedCount < objectCount && attempts < maxAttempts)
             {
                 Vector3 randomPosition = GenerateRandomPosition(min, max, positionY);
     
-                if (CheckValidDistance(randomPosition, positions, distanceBetweenObjects))
+                if (CheckValidDistance(randomPosition, positions))
                 {
                     positions.Add(randomPosition);
                     spawnedCount++;
@@ -59,17 +76,16 @@ namespace Tiger
                 attempts++;
             }
 
-            positions.ForEach(pos => Instantiate(objectPrefab, pos, Quaternion.identity));
+            positions.ForEach(pos => Instantiate(prefab, pos, Quaternion.identity));
         }
         
-        private (float positionY, Vector3 min, Vector3 max) 
-            GetSpawnData(float distanceBetweenObjects)
+        private (float positionY, Vector3 min, Vector3 max) GetSpawnData()
         {
             Bounds bounds = spawnArea.GetComponent<Renderer>().bounds;
             float positionY = bounds.max.y;
 
-            Vector3 min = bounds.min + Vector3.one * distanceBetweenObjects;
-            Vector3 max = bounds.max - Vector3.one * distanceBetweenObjects;
+            Vector3 min = bounds.min + Vector3.one * _distanceBetweenObjects;
+            Vector3 max = bounds.max - Vector3.one * _distanceBetweenObjects;
 
             return (positionY, min, max);
         }
@@ -81,11 +97,11 @@ namespace Tiger
             return new Vector3(x, positionY, z);
         }
         
-        private bool CheckValidDistance(Vector3 newPosition, List<Vector3> existingPositions, float minDistance)
+        private bool CheckValidDistance(Vector3 newPosition, List<Vector3> existingPositions)
         {
             foreach (Vector3 position in existingPositions)
             {
-                if (Vector3.Distance(position, newPosition) < minDistance)
+                if (Vector3.Distance(position, newPosition) < _distanceBetweenObjects)
                     return false;
             }
             return true;
