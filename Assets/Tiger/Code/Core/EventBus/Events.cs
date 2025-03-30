@@ -49,6 +49,11 @@ namespace Tiger {
         public bool isVictory;
     }
     
+    public struct GameFlowNumsChanged : IEvent {
+        public int tilIncr;
+        public int victCond;
+    }
+    
     public enum UISliders {
         SfxVolume,
         MusicVolume,

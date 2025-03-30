@@ -44,6 +44,11 @@ namespace Tiger {
             EventBus<OnLivesCountChanged>.Raise(new OnLivesCountChanged {
                 count = _livesCount
             });
+            
+            EventBus<GameFlowNumsChanged>.Raise(new GameFlowNumsChanged {
+                tilIncr = _turnsTillObjIncrease,
+                victCond = data.maxObjectsCount
+            });
 
         }
 
@@ -76,6 +81,10 @@ namespace Tiger {
             }
             else {
                 _turnsTillObjIncrease--;
+                EventBus<GameFlowNumsChanged>.Raise(new GameFlowNumsChanged {
+                    tilIncr = _turnsTillObjIncrease,
+                    victCond = data.maxObjectsCount
+                });
                 if (_turnsTillObjIncrease == 0) {
                     if (data.maxObjectsCount < _objectsCount)
                         EventBus<TisTheEnd>.Raise(new TisTheEnd {
