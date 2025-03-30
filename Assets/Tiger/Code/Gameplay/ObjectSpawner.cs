@@ -68,23 +68,26 @@ namespace Tiger
             int attempts = 0;
             int maxAttempts = objectVariants.Count * 30;
             
-            while (spawnedCount < objectVariants.Count && attempts < maxAttempts)
+            while (spawnedCount < objectVariants.Count)
             {
                 Vector3 randomPosition = GenerateRandomPosition(min, max, positionY);
     
                 if (CheckSpaceForSpawn(randomPosition))
                 {
+                    Debug.Log(CheckSpaceForSpawn(randomPosition));
                     positions.Add(randomPosition);
+                    var spawnedObject = Instantiate(_objectPrefab, positions[spawnedCount], Quaternion.identity);
+                    spawnedObject.Init(objectVariants[spawnedCount]);
                     spawnedCount++;
                 }
     
                 attempts++;
             }
 
-            for (int i = 0; i < objectVariants.Count; i++) {
-                var spawnedObject = Instantiate(_objectPrefab, positions[i], Quaternion.identity);
-                spawnedObject.Init(objectVariants[i]);
-            }
+            // for (int i = 0; i < objectVariants.Count; i++) {
+            //     var spawnedObject = Instantiate(_objectPrefab, positions[i], Quaternion.identity);
+            //     spawnedObject.Init(objectVariants[i]);
+            // }
             // positions.ForEach(pos => {
             //     var spawnedObject = Instantiate(_objectPrefab, pos, Quaternion.identity);
             //     spawnedObject.Init();
@@ -97,7 +100,7 @@ namespace Tiger
             float positionY = _spawningYTransform.position.y;
 
             Vector3 min = bounds.min + Vector3.one * spawnCheckRadius + Vector3.one;
-            Vector3 max = bounds.max - Vector3.one * spawnCheckRadius - Vector3.one;
+            Vector3 max = bounds.max - Vector3.one * spawnCheckRadius + Vector3.one;
 
             return (positionY, min, max);
         }
