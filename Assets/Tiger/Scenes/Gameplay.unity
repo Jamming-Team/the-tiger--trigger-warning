@@ -2838,7 +2838,8 @@ MonoBehaviour:
   spawnCheckLayerMask:
     serializedVersion: 2
     m_Bits: 4096
-  spawnCheckRadius: 1
+  spawnCheckRadius: 0.5
+  _spawnOffset: 2
 --- !u!1001 &848135668
 PrefabInstance:
   m_ObjectHideFlags: 0

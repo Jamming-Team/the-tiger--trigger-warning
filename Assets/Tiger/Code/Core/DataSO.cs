@@ -23,9 +23,9 @@ namespace Tiger {
             public string test = "Tis WORKING!";
             public CameraData camera;
 
-            [Range(1, 5)]
+            [Range(1, 9)]
             public int initialObjectsCount = 3;
-            [Range(5, 9)]
+            [Range(1, 9)]
             public int maxObjectsCount = 9;
             [Range(1, 3)]
             public int turnsTillIncrease = 1;

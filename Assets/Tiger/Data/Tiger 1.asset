@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0e149a6cfe0400a96a72c698d3be5a4, type: 3}
+  m_Name: Tiger 1
+  m_EditorClassIdentifier: 
+  audio:
+    musicVolume: 0.79119056
+    sfxVolume: 0.7992881
+    music:
+      bundles:
+        _serializedList:
+        - Key: 0
+          Value:
+            audioClips:
+            - {fileID: 8300000, guid: d91436da2a88fed0d905151b7b5ddea3, type: 3}
+            shouldLoopFirstClip: 0
+      crossFadeTime: 3
+  game:
+    test: Tis WORKING!
+    camera:
+      zoomSensitivity: 50
+      zoomConstraints: {x: 15, y: 40}
+      verticalAxisConstraint: {x: 10, y: 50}
+      rotationSensitivity: {x: 300, y: 200}
+    initialObjectsCount: 9
+    maxObjectsCount: 9
+    turnsTillIncrease: 2
+    livesCount: 3
+    objectsToAddOverNeeded: 3
+    transitions:
+      _serializedList:
+      - Key: 0
+        Value: e8030000e8030000e8030000e8030000d0070000
+      - Key: 1
+        Value: d0070000d0070000d0070000
+      - Key: 2
+        Value: d0070000d0070000
+      - Key: 3
+        Value: d0070000d0070000d0070000
+    objectVariantsData:
+    - name: Candle
+      sprite: {fileID: -596624257064684058, guid: fa0a27a19da87e1569126758df7de9ff, type: 3}
+      colorType: 0
+    - name: Box
+      sprite: {fileID: 4968497141197874027, guid: 547db2a42e4b494b4a60892226c275bd, type: 3}
+      colorType: 0
+    - name: chair
+      sprite: {fileID: -3314310351069470079, guid: 2b952dfce07d0fed29149bc3b5e4fee5, type: 3}
+      colorType: 0
+    - name: paperPile
+      sprite: {fileID: 9187258793448160144, guid: 9c55a16ef5166f65fa6bdcb040ea05ab, type: 3}
+      colorType: 0
+    - name: car
+      sprite: {fileID: -8370911629351663464, guid: c55e3953929fbcebe9a93bb93886315d, type: 3}
+      colorType: 0
+    - name: toy
+      sprite: {fileID: 2758887085411406935, guid: ea9369eae0d206b20a0d0099da8a85ca, type: 3}
+      colorType: 0
+    - name: creeper
+      sprite: {fileID: 5887045465808851504, guid: 1cfac13b1fcee3996aaa4260f07705f6, type: 3}
+      colorType: 0
+    - name: cookie
+      sprite: {fileID: 8548129674067751730, guid: 38fb4693a3583575ca461047c6d85089, type: 3}
+      colorType: 0
+    - name: printer
+      sprite: {fileID: -7285923042902591436, guid: a9010de868469cb6e9bd3dd0e247cc23, type: 3}
+      colorType: 0
+    - name: shwabra
+      sprite: {fileID: -809469280468014139, guid: d26e69c3d685b5c139b73cf81030ffed, type: 3}
+      colorType: 0
+    - name: stairs
+      sprite: {fileID: 1893173334857689753, guid: d7133d55a939d839b9f7407013395c12, type: 3}
+      colorType: 0
+    - name: suitcase
+      sprite: {fileID: -1840296373339890393, guid: da6115deed95fb215b601663317403b3, type: 3}
+      colorType: 0
+  ui:
+    transitionMsgs:
+      _serializedList:
+      - Key: 0
+        Value:
+          message: 
+          textColor: {r: 0, g: 0, b: 0, a: 0}
+      - Key: 1
+        Value:
+          message: CORRECT!
+          textColor: {r: 0.4727986, g: 0.8093101, b: 0.41108683, a: 1}
+      - Key: 2
+        Value:
+          message: WRONG!
+          textColor: {r: 0.6792453, g: 0.33641866, b: 0.33641866, a: 1}
+      - Key: 3
+        Value:
+          message: REMEMBER
+          textColor: {r: 0.81662273, g: 0.7689413, b: 0.3219387, a: 1}
+      - Key: 4
+        Value:
+          message: REPEAT
+          textColor: {r: 0.684465, g: 0.7021703, b: 0.39290234, a: 1}

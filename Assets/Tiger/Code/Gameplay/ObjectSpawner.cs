@@ -14,6 +14,8 @@ namespace Tiger
         [SerializeField] private LayerMask spawnCheckLayerMask;
         [SerializeField] private float spawnCheckRadius = 1f;
         
+        [SerializeField] float _spawnOffset = 2f;
+        
         // START for tests
         void Update()
         {
@@ -84,6 +86,10 @@ namespace Tiger
                 attempts++;
             }
 
+            if (spawnedCount < objectVariants.Count) {
+                Debug.Log("Not everything was spawned");
+            }
+
             // for (int i = 0; i < objectVariants.Count; i++) {
             //     var spawnedObject = Instantiate(_objectPrefab, positions[i], Quaternion.identity);
             //     spawnedObject.Init(objectVariants[i]);
@@ -99,8 +105,8 @@ namespace Tiger
             Bounds bounds = spawnArea.GetComponent<Renderer>().bounds;
             float positionY = _spawningYTransform.position.y;
 
-            Vector3 min = bounds.min + Vector3.one * spawnCheckRadius + Vector3.one;
-            Vector3 max = bounds.max - Vector3.one * spawnCheckRadius + Vector3.one;
+            Vector3 min = bounds.min + Vector3.one * spawnCheckRadius + Vector3.one * _spawnOffset;
+            Vector3 max = bounds.max - Vector3.one * spawnCheckRadius - Vector3.one * _spawnOffset;
 
             return (positionY, min, max);
         }

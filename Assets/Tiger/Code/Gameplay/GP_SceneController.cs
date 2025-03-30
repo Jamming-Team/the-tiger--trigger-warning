@@ -13,7 +13,6 @@ namespace Tiger {
         [HideInInspector] public NoteStates noteState = NoteStates.ViewUntilResume; 
         
             
-            
         [HideInInspector]
         public DataSO.GameData data { get; set; }
         public bool freeActIsInAction => _stateMachine.currentState is Gameplay.GP_ActionState;
@@ -96,10 +95,12 @@ namespace Tiger {
                     victCond = data.maxObjectsCount
                 });
                 if (_turnsTillObjIncrease == 0) {
-                    if (data.maxObjectsCount < _objectsCount)
+                    if (data.maxObjectsCount < _objectsCount) {
                         EventBus<TisTheEnd>.Raise(new TisTheEnd {
                             isVictory = true
                         });
+                        noteState = NoteStates.ViewUntilExit;
+                    }
                     else {
                         _turnsTillObjIncrease = data.turnsTillIncrease;
                         _curObjCount++;
