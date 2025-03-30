@@ -14,6 +14,10 @@ namespace Tiger {
             _animator.gameObject.SetActive(true);
         }
 
+        void OnDestroy() {
+                EventBus<FadeRequest>.Deregister(_fadeRequestBinding);
+        }
+
         void PerformFadeAction(FadeRequest fadeRequest) {
             
             Debug.Log($"FaderView::PerformFadeAction::{fadeRequest.shouldFade}");

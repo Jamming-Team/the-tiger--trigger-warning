@@ -16,6 +16,10 @@ namespace Tiger {
             _setTransitionMsgBinding = new EventBinding<UISetTransitionMsg>(SetMsg);
             EventBus<UISetTransitionMsg>.Register(_setTransitionMsgBinding);
         }
+        
+        void OnDestroy() {
+            EventBus<UISetTransitionMsg>.Deregister(_setTransitionMsgBinding);
+        }
 
         void SetMsg(UISetTransitionMsg transitionMsgEvent) {
             if (transitionMsgEvent.type == UITransitionMessageTypes.None) {
