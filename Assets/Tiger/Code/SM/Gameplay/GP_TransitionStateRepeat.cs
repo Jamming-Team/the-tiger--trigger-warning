@@ -17,10 +17,10 @@ namespace Tiger.Gameplay {
 
 
             // Show walls
-            
+            _core.noteState = GP_SceneController.NoteStates.ViewUntilUpdate;
+
             var tisDefeat = _core.FillFinal();
 
-            _core.noteState = GP_SceneController.NoteStates.ViewUntilUpdate;
 
             if (tisDefeat) {
                 EventBus<TisTheEnd>.Raise(new TisTheEnd {

@@ -90,12 +90,9 @@ namespace Tiger {
                     type = UITransitionMessageTypes.Correct
                 });
                 _turnsTillObjIncrease--;
-                EventBus<GameFlowNumsChanged>.Raise(new GameFlowNumsChanged {
-                    tilIncr = _turnsTillObjIncrease,
-                    victCond = data.maxObjectsCount
-                });
                 if (_turnsTillObjIncrease == 0) {
-                    if (data.maxObjectsCount < _objectsCount) {
+                    _curObjCount++;
+                    if (data.maxObjectsCount < _curObjCount) {
                         EventBus<TisTheEnd>.Raise(new TisTheEnd {
                             isVictory = true
                         });
@@ -103,10 +100,15 @@ namespace Tiger {
                     }
                     else {
                         _turnsTillObjIncrease = data.turnsTillIncrease;
-                        _curObjCount++;
                     }
                 }
+                EventBus<GameFlowNumsChanged>.Raise(new GameFlowNumsChanged {
+                    tilIncr = _turnsTillObjIncrease,
+                    victCond = data.maxObjectsCount
+                });
             }
+            
+            
             
             return shouldLose;
         }

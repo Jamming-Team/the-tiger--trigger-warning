@@ -31,9 +31,9 @@ MonoBehaviour:
       zoomConstraints: {x: 15, y: 40}
       verticalAxisConstraint: {x: 10, y: 50}
       rotationSensitivity: {x: 300, y: 200}
-    initialObjectsCount: 9
-    maxObjectsCount: 9
-    turnsTillIncrease: 2
+    initialObjectsCount: 1
+    maxObjectsCount: 2
+    turnsTillIncrease: 1
     livesCount: 3
     objectsToAddOverNeeded: 3
     transitions:
