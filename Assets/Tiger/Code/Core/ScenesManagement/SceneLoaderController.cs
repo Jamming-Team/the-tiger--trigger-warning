@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace Tiger {
     public class SceneLoaderController : MonoBehaviour {
-        // [SerializeField] SceneLoaderView _view;
+        [SerializeField] SceneLoaderView _view;
         readonly SceneLoaderModel _model = new();
         float _progress = 0;
         bool _isLoading = false;
@@ -34,10 +34,10 @@ namespace Tiger {
             // _view.ReadyToContinue += OnReadyToContinue;
 
 
-            // _view.EnableLoadingCanvas();
+            _view.EnableLoadingCanvas();
             await _model.LoadScene(sceneName, progress);
             // await tcs.Task; // TODO: States in view for "PRESS ANY BUTTON"
-            // _view.EnableLoadingCanvas(false);
+            _view.EnableLoadingCanvas(false);
             _isLoading = false;
         }
     }

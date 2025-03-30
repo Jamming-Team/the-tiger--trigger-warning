@@ -21,6 +21,9 @@ namespace Tiger {
 
             var operationGroup = new AsyncOperationGroup(OPERATIONS_AMOUNT);
 
+            await Task.Delay(1000);
+
+            
             var operation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
             // A way to have a delay with that `Task` stuff
             // await Task.Delay(TimeSpan.FromSeconds(1));
