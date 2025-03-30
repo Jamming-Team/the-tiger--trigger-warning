@@ -23,12 +23,12 @@ MonoBehaviour:
             audioClips:
             - {fileID: 8300000, guid: 222370c3e8b40e46bbffbf9f5a2b3301, type: 3}
             shouldLoopFirstClip: 1
-      crossFadeTime: 2
+      crossFadeTime: 4
   game:
     test: Tis WORKING!
     camera:
       zoomSensitivity: 50
-      zoomConstraints: {x: 15, y: 40}
+      zoomConstraints: {x: 22.5, y: 40}
       verticalAxisConstraint: {x: 10, y: 50}
       rotationSensitivity: {x: 300, y: 200}
     initialObjectsCount: 1
@@ -79,6 +79,9 @@ MonoBehaviour:
       colorType: 0
     - name: stairs
       sprite: {fileID: 1893173334857689753, guid: d7133d55a939d839b9f7407013395c12, type: 3}
+      colorType: 0
+    - name: suitcase
+      sprite: {fileID: -1840296373339890393, guid: da6115deed95fb215b601663317403b3, type: 3}
       colorType: 0
     - name: suitcase
       sprite: {fileID: -1840296373339890393, guid: da6115deed95fb215b601663317403b3, type: 3}
