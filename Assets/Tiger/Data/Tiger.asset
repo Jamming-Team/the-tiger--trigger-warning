@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tiger
   m_EditorClassIdentifier: 
   audio:
-    musicVolume: 0.79119056
+    musicVolume: 0.17675392
     sfxVolume: 0.7992881
     music:
       bundles:
@@ -21,9 +21,9 @@ MonoBehaviour:
         - Key: 0
           Value:
             audioClips:
-            - {fileID: 8300000, guid: d91436da2a88fed0d905151b7b5ddea3, type: 3}
-            shouldLoopFirstClip: 0
-      crossFadeTime: 3
+            - {fileID: 8300000, guid: 222370c3e8b40e46bbffbf9f5a2b3301, type: 3}
+            shouldLoopFirstClip: 1
+      crossFadeTime: 2
   game:
     test: Tis WORKING!
     camera:
@@ -32,7 +32,7 @@ MonoBehaviour:
       verticalAxisConstraint: {x: 10, y: 50}
       rotationSensitivity: {x: 300, y: 200}
     initialObjectsCount: 1
-    maxObjectsCount: 2
+    maxObjectsCount: 5
     turnsTillIncrease: 1
     livesCount: 3
     objectsToAddOverNeeded: 3
