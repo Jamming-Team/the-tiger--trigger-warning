@@ -8,6 +8,8 @@ namespace Tiger {
         [SerializeField] NoteController _noteController;
         [SerializeField] int _objectsCount;
 
+        [SerializeField] GameObject _walls;
+        
         [HideInInspector] public NoteStates noteState = NoteStates.ViewUntilResume; 
         
             
@@ -98,6 +100,10 @@ namespace Tiger {
             }
             
             return shouldLose;
+        }
+
+        public void ChangeWallsVisibility(bool visibility) {
+            _walls.SetActive(visibility);
         }
 
         public void SpawnThose() {

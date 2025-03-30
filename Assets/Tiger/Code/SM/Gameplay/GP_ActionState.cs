@@ -9,8 +9,15 @@ namespace Tiger.Gameplay {
         protected override void OnEnter() {
             base.OnEnter();
             // Test();
+            _core.ChangeWallsVisibility(false);
+
         }
-        
+
+        protected override void OnExit() {
+            base.OnExit();
+            _core.ChangeWallsVisibility(true);
+        }
+
         protected override void OnUIButtonPressed(UIButtonPressed e) {
             if (!_core.freeActIsInAction) return;
             Debug.Log("OnUIButtonPressed : " + e);
