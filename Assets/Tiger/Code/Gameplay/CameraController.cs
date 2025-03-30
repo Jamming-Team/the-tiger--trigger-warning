@@ -37,7 +37,8 @@ namespace Tiger {
         }
 
         void DetectClick() {
-            if (Input.GetMouseButtonDown(0)) {
+            if (Input.GetMouseButtonDown(0))
+            {
                 Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, _layerInteractive)) {
                     if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Interactive"))
@@ -51,6 +52,16 @@ namespace Tiger {
                 }
             }
         }
+
+        void RandomRotateCamera()
+        {
+            float horizontalRotation = UnityEngine.Random.Range(0f, 360f);
+            float verticalRotation = UnityEngine.Random.Range(data.verticalAxisConstraint.x, data.verticalAxisConstraint.y);
+
+            _orbitalFollow.HorizontalAxis.Value = horizontalRotation;
+            _orbitalFollow.VerticalAxis.Value = verticalRotation;
+        }
+
 
 
         public void Accept(IVisitor visitor) {
