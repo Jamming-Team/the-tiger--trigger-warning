@@ -23,6 +23,8 @@ namespace Tiger
         }
 
         public void OnMouseOver() {
+            if (!Cursor.visible)
+                return;
             _onHoverObject.SetActive(true);
         }
 

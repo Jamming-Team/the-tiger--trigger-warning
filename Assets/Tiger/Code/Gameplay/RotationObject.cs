@@ -4,11 +4,12 @@ namespace Tiger
 {
     public class RotationObject : MonoBehaviour
     {
-        [SerializeField] private Camera _camera;
+        Camera _camera;
         private Vector3 _lastCameraPosition;
 
         void Start()
         {
+            _camera = Camera.main;
             UpdateRotation();
         }
 
