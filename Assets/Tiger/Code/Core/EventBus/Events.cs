@@ -17,6 +17,11 @@ namespace Tiger {
         public float value;
     }
     
+    public struct UIDropdownChanged : IEvent {
+        public UIDropdownTypes dropdownType;
+        public int value;
+    }
+    
     public struct DataChanged : IEvent {}
 
     public struct FadeRequest : IEvent {
@@ -47,6 +52,13 @@ namespace Tiger {
     public enum UISliders {
         SfxVolume,
         MusicVolume,
+    }
+    
+    public enum UIDropdownTypes {
+        InitialObj,
+        MaxObj,
+        LivesCount,
+        TilIncrease
     }
     
     public enum UIButtonTypes {

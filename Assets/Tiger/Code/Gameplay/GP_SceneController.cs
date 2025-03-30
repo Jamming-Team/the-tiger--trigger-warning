@@ -30,7 +30,7 @@ namespace Tiger {
             GameManager.Instance.RequestData(this);
             Debug.Log(data.test);
 
-            _livesCount = data.livesCount;
+            _livesCount = data.livesCount == 0 ? 9999 : data.livesCount;
             _curObjCount = data.initialObjectsCount;
             _turnsTillObjIncrease = data.turnsTillIncrease;
             

@@ -5,8 +5,15 @@ using UnityEngine;
 namespace Tiger {
     public class UIView : MonoBehaviour {
         [SerializeField] List<UIViewButton> _buttons;
+        
+        [SerializeField] List<UIViewSlider> _sliders;
+        [SerializeField] List<UIViewDropdown> _dropdowns;
+
 
         EventBinding<UIButtonPressed> testEventBinding;
+        
+
+
 
         // void Start() {
         //     _buttons.ForEach(x => x.buttonReference.onClick.AddListener(delegate {
@@ -20,6 +27,19 @@ namespace Tiger {
         void Start() {
             _buttons.ForEach(x => x.buttonReference.onClick.AddListener(delegate {
                 RaiseUIButtonEvent(x.buttonType);
+            }));
+            _sliders.ForEach(x => x.sliderReference.onValueChanged.AddListener(delegate {
+                EventBus<UISliderChanged>.Raise(new UISliderChanged {
+                    sliderType = x.sliderType,
+                    value = x.sliderReference.value,
+                });
+            }));
+            
+            _dropdowns.ForEach(x => x.dropdownReference.onValueChanged.AddListener(delegate {
+                EventBus<UIDropdownChanged>.Raise(new UIDropdownChanged {
+                    dropdownType = x.dropdownType,
+                    value = x.dropdownReference.value + 1,
+                });
             }));
             
             testEventBinding = new EventBinding<UIButtonPressed>(Test);

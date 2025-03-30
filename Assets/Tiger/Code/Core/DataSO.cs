@@ -23,9 +23,13 @@ namespace Tiger {
             public string test = "Tis WORKING!";
             public CameraData camera;
 
+            [Range(1, 5)]
             public int initialObjectsCount = 3;
+            [Range(5, 9)]
             public int maxObjectsCount = 9;
+            [Range(1, 3)]
             public int turnsTillIncrease = 1;
+            [Range(0, 6)]
             public int livesCount = 3;
 
             [SerializedDictionary("Type", "Timings")]
