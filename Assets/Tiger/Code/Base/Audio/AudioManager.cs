@@ -4,7 +4,7 @@ using UnityEngine.Audio;
 using static Tiger.DataSO;
 
 namespace Tiger {
-    public class AudioManager : MonoBehaviour, IVisitable {
+    public class AudioManager : Singleton<AudioManager>, IVisitable {
         const string MUSIC_VOLUME_NAME = "MusicVolume";
         const string SFX_VOLUME_NAME = "SfxVolume";
         
@@ -48,11 +48,13 @@ namespace Tiger {
             }
         }
 
-        public void PlaySound(SoundData soundData) {
-            _soundModel.CreateSoundBuilder()
-                .WithRandomPitch()
-                .WithPosition(transform.position)
-                .Play(soundData);
+        public void PlaySound(SoundData soundData, Transform playTransform = null) {
+            var a = _soundModel.CreateSoundBuilder()
+                .WithRandomPitch();
+            if (playTransform != null) {
+                a.WithPosition(playTransform.position);
+            } 
+            a.Play(soundData);
         }
         
         void AdjustMixerVolume() {

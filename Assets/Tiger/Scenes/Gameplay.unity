@@ -4681,6 +4681,31 @@ MonoBehaviour:
   _noteItemPrefab: {fileID: 1790552425872689290, guid: d509a2b535e6afbed833e2213b4e3977, type: 3}
   _noteItemsRoot: {fileID: 544034676}
   _noteItemsRootWrong: {fileID: 491435841}
+  _showNoteSoundData:
+    clips:
+    - {fileID: 8300000, guid: c637f8ae3678ad7189b3c7088d1c7a55, type: 3}
+    mixerGroup: {fileID: 4899324373676588614, guid: 254d22ba027da93348e243dea0565bd9, type: 2}
+    playOnAwake: 0
+    frequentSound: 0
+    mute: 0
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 128
+    volume: 1
+    pitch: 1
+    panStereo: 0
+    spatialBlend: 0
+    reverbZoneMix: 1
+    dopplerLevel: 1
+    spread: 0
+    minDistance: 1
+    maxDistance: 500
+    ignoreListenerVolume: 0
+    ignoreListenerPause: 0
+    rolloffMode: 0
+    shouldPlayOnLoop: 0
+    objectToStick: {fileID: 0}
 --- !u!114 &1205418143
 MonoBehaviour:
   m_ObjectHideFlags: 0

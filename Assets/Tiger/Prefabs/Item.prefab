@@ -72,6 +72,81 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 3388490316233566724}
   _onHoverObject: {fileID: 6877705423650242444}
   _onSelectedObject: {fileID: 1871770214820684287}
+  _onHoverSoundData:
+    clips:
+    - {fileID: 8300000, guid: 33d970a56ffcc884c8030f5916d8ebfb, type: 3}
+    mixerGroup: {fileID: 4899324373676588614, guid: 254d22ba027da93348e243dea0565bd9, type: 2}
+    playOnAwake: 0
+    frequentSound: 0
+    mute: 0
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 128
+    volume: 1
+    pitch: 1
+    panStereo: 0
+    spatialBlend: 0
+    reverbZoneMix: 1
+    dopplerLevel: 1
+    spread: 0
+    minDistance: 1
+    maxDistance: 500
+    ignoreListenerVolume: 0
+    ignoreListenerPause: 0
+    rolloffMode: 0
+    shouldPlayOnLoop: 0
+    objectToStick: {fileID: 0}
+  _onSelectSoundData:
+    clips:
+    - {fileID: 8300000, guid: 4f8168bd9b2b5f3cb9d73b8b9b29b103, type: 3}
+    mixerGroup: {fileID: 4899324373676588614, guid: 254d22ba027da93348e243dea0565bd9, type: 2}
+    playOnAwake: 0
+    frequentSound: 0
+    mute: 0
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 128
+    volume: 1
+    pitch: 1
+    panStereo: 0
+    spatialBlend: 0
+    reverbZoneMix: 1
+    dopplerLevel: 1
+    spread: 0
+    minDistance: 1
+    maxDistance: 500
+    ignoreListenerVolume: 0
+    ignoreListenerPause: 0
+    rolloffMode: 0
+    shouldPlayOnLoop: 0
+    objectToStick: {fileID: 0}
+  _onDeselectSoundData:
+    clips:
+    - {fileID: 8300000, guid: d41c710c7e2ec7ff6ba5ae92ca8b5e5a, type: 3}
+    mixerGroup: {fileID: 4899324373676588614, guid: 254d22ba027da93348e243dea0565bd9, type: 2}
+    playOnAwake: 0
+    frequentSound: 0
+    mute: 0
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 128
+    volume: 1
+    pitch: 1
+    panStereo: 0
+    spatialBlend: 0
+    reverbZoneMix: 1
+    dopplerLevel: 1
+    spread: 0
+    minDistance: 1
+    maxDistance: 500
+    ignoreListenerVolume: 0
+    ignoreListenerPause: 0
+    rolloffMode: 0
+    shouldPlayOnLoop: 0
+    objectToStick: {fileID: 0}
   variantData:
     name: 
     sprite: {fileID: 0}

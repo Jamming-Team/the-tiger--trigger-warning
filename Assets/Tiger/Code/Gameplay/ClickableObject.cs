@@ -10,8 +10,15 @@ namespace Tiger
         [SerializeField] GameObject _onHoverObject;
         [SerializeField] GameObject _onSelectedObject;
         
+        [SerializeField] SoundData _onHoverSoundData;
+        [SerializeField] SoundData _onSelectSoundData;
+        [SerializeField] SoundData _onDeselectSoundData;
+
+        
         [HideInInspector]
         public DataSO.ObjectData variantData;
+        
+        
         
         bool _isSelected = false;
 
@@ -22,10 +29,15 @@ namespace Tiger
             _spriteRenderer.color = data.GetColor();
         }
 
-        public void OnMouseOver() {
+        void OnMouseEnter() {
             if (!Cursor.visible)
                 return;
             _onHoverObject.SetActive(true);
+            AudioManager.Instance.PlaySound(_onHoverSoundData, transform);
+        }
+
+        public void OnMouseOver() {
+
         }
 
         public void OnMouseExit() {
@@ -47,6 +59,8 @@ namespace Tiger
                 item = this,
                 shouldAdd = _isSelected
             });
+            
+            AudioManager.Instance.PlaySound(_isSelected ? _onSelectSoundData : _onDeselectSoundData, transform);
         }
     }
 }

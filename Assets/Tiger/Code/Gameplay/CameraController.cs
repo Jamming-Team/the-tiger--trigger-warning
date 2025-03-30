@@ -9,6 +9,8 @@ namespace Tiger {
         [SerializeField] Camera _camera;
         [SerializeField] LayerMask _layerInteractive;
         
+
+        
         public DataSO.CameraData data { get; set; }
 
         void Start() {

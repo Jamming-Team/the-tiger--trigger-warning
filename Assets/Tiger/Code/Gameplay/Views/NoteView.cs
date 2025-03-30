@@ -10,6 +10,8 @@ namespace Tiger {
         [SerializeField] GameObject _noteItemsRoot;
         [SerializeField] GameObject _noteItemsRootWrong;
         
+        [SerializeField] SoundData _showNoteSoundData;
+        
         EventBinding<NoteChanged> _noteChangedBinding;
         List<NoteItem> _noteItems = new List<NoteItem>();
         List<NoteItem> _noteItemsWrong = new List<NoteItem>();
@@ -47,6 +49,9 @@ namespace Tiger {
                 newNoteItem?.Init(i + 1, noteChangedEvent.notes[i].data.sprite, noteChangedEvent.notes[i].type, noteChangedEvent.notes[i].data.GetColor());
 
             }
+            
+            AudioManager.Instance.PlaySound(_showNoteSoundData);
+
             
             
         }
