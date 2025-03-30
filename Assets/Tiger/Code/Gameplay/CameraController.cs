@@ -22,6 +22,13 @@ namespace Tiger {
         {
             OnCameraRotation();
             DetectClick();
+
+            CalculateZoom();
+        }
+
+        void CalculateZoom() {
+            _orbitalFollow.Radius = Mathf.Clamp(_orbitalFollow.Radius + -_inputReader.mouseScroll * data.zoomSensitivity * Time.deltaTime,
+                data.zoomConstraints.x, data.zoomConstraints.y);
         }
 
         void OnCameraRotation()

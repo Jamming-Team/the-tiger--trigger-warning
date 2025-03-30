@@ -85,6 +85,8 @@ namespace Tiger {
         
         [Serializable]
         public class CameraData {
+            public float zoomSensitivity = 10f;
+            public Vector2 zoomConstraints = new Vector2(15f, 40f);
             public Vector2 verticalAxisConstraint = new Vector2(10f, 50f);
             public Vector2 rotationSensitivity = new Vector2(400f, 200f);
         }

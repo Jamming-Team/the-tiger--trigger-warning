@@ -135,6 +135,15 @@ public partial class @TigerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": ""NormalizeVector2"",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Zoom"",
+                    ""type"": ""Value"",
+                    ""id"": ""cdee8a24-7a5f-4c0d-96d0-5bf60703e4f9"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -192,6 +201,17 @@ public partial class @TigerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Delta"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d211c0b3-f93f-40be-8d23-81d9bf1c4986"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Zoom"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -205,6 +225,7 @@ public partial class @TigerInputActions: IInputActionCollection2, IDisposable
         m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
         m_Gameplay_Pause = m_Gameplay.FindAction("Pause", throwIfNotFound: true);
         m_Gameplay_Delta = m_Gameplay.FindAction("Delta", throwIfNotFound: true);
+        m_Gameplay_Zoom = m_Gameplay.FindAction("Zoom", throwIfNotFound: true);
     }
 
     ~@TigerInputActions()
@@ -290,6 +311,7 @@ public partial class @TigerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Interact;
     private readonly InputAction m_Gameplay_Pause;
     private readonly InputAction m_Gameplay_Delta;
+    private readonly InputAction m_Gameplay_Zoom;
     /// <summary>
     /// Provides access to input actions defined in input action map "Gameplay".
     /// </summary>
@@ -321,6 +343,10 @@ public partial class @TigerInputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Gameplay/Delta".
         /// </summary>
         public InputAction @Delta => m_Wrapper.m_Gameplay_Delta;
+        /// <summary>
+        /// Provides access to the underlying input action "Gameplay/Zoom".
+        /// </summary>
+        public InputAction @Zoom => m_Wrapper.m_Gameplay_Zoom;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -362,6 +388,9 @@ public partial class @TigerInputActions: IInputActionCollection2, IDisposable
             @Delta.started += instance.OnDelta;
             @Delta.performed += instance.OnDelta;
             @Delta.canceled += instance.OnDelta;
+            @Zoom.started += instance.OnZoom;
+            @Zoom.performed += instance.OnZoom;
+            @Zoom.canceled += instance.OnZoom;
         }
 
         /// <summary>
@@ -388,6 +417,9 @@ public partial class @TigerInputActions: IInputActionCollection2, IDisposable
             @Delta.started -= instance.OnDelta;
             @Delta.performed -= instance.OnDelta;
             @Delta.canceled -= instance.OnDelta;
+            @Zoom.started -= instance.OnZoom;
+            @Zoom.performed -= instance.OnZoom;
+            @Zoom.canceled -= instance.OnZoom;
         }
 
         /// <summary>
@@ -463,5 +495,12 @@ public partial class @TigerInputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnDelta(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Zoom" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnZoom(InputAction.CallbackContext context);
     }
 }

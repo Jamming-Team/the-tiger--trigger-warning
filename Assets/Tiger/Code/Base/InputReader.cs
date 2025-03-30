@@ -15,6 +15,8 @@ namespace Tiger {
 
         public Vector2 mousePosition = Vector2.zero;
         public Vector2 mouseDelta => _inputActions.Gameplay.Delta.ReadValue<Vector2>();
+        public float mouseScroll => _inputActions.Gameplay.Zoom.ReadValue<float>();
+
         public bool rotateIsBeingPressed => _inputActions.Gameplay.Rotate.inProgress;
         public bool interactIsBeingPressed => _inputActions.Gameplay.Interact.inProgress;
         
@@ -63,6 +65,10 @@ namespace Tiger {
 
         public void OnDelta(InputAction.CallbackContext context) {
             // mouseDelta = context.ReadValue<Vector2>();
+        }
+
+        public void OnZoom(InputAction.CallbackContext context) {
+            // throw new System.NotImplementedException();
         }
     }
 }

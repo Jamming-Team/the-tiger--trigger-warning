@@ -27,6 +27,8 @@ MonoBehaviour:
   game:
     test: Tis WORKING!
     camera:
+      zoomSensitivity: 50
+      zoomConstraints: {x: 15, y: 40}
       verticalAxisConstraint: {x: 10, y: 50}
       rotationSensitivity: {x: 300, y: 200}
     initialObjectsCount: 3
