@@ -23,7 +23,7 @@ namespace Tiger.Gameplay {
             await Task.Delay(_transitionTimings[0]);
 
             
-            // Spawn here
+            // Zoom Here
             
             await Task.Delay(_transitionTimings[1]);
             
@@ -42,14 +42,16 @@ namespace Tiger.Gameplay {
             
             await Task.Delay(_transitionTimings[3]);
 
-            EventBus<FadeRequest>.Raise(new FadeRequest
-            {
-                shouldFade = true
-            });
-            
-            await Task.Delay(_transitionTimings[4]);
+            // EventBus<FadeRequest>.Raise(new FadeRequest
+            // {
+            //     shouldFade = true
+            // });
+            //
+            // await Task.Delay(_transitionTimings[4]);
 
-            RequestTransition<GP_TransitionStateRepeat>();
+            _core.FillInitial();
+            
+            RequestTransition<GP_NoteState>();
 
         }
     }

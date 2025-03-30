@@ -5,6 +5,8 @@ namespace Tiger
 {
     public class ObjectSpawner : MonoBehaviour
     {
+        [SerializeField] private ClickableObject _objectPrefab;
+        
         [SerializeField] private GameObject usualItemPrefab;
         [SerializeField] private GameObject mimicPrefab;
         [SerializeField] private GameObject spawnArea;
@@ -14,20 +16,20 @@ namespace Tiger
         // START for tests
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.LeftShift))
-            {
-                SpawnUsualItems(5);
-            }
-            
-            if (Input.GetKeyDown(KeyCode.RightShift))
-            {
-                SpawnMimic();
-            }
-            
-            if (Input.GetKeyDown(KeyCode.LeftControl))
-            {
-                DestroyAllObjects();
-            }
+            // if (Input.GetKeyDown(KeyCode.LeftShift))
+            // {
+            //     SpawnUsualItems(5);
+            // }
+            //
+            // if (Input.GetKeyDown(KeyCode.RightShift))
+            // {
+            //     SpawnMimic();
+            // }
+            //
+            // if (Input.GetKeyDown(KeyCode.LeftControl))
+            // {
+            //     DestroyAllObjects();
+            // }
         }
         // END for tests
 
@@ -45,26 +47,27 @@ namespace Tiger
             }
         }
 
-        void SpawnUsualItems(int count)
-        {
-            SpawnObjects(count, usualItemPrefab);
-        }
-        
-        void SpawnMimic()
-        {
-            SpawnObjects(1, mimicPrefab);
-        }
+        // void SpawnUsualItems(int count)
+        // {
+        //     SpawnObjects(count, usualItemPrefab);
+        // }
+        //
+        // void SpawnMimic()
+        // {
+        //     SpawnObjects(1, mimicPrefab);
+        // }
 
-        void SpawnObjects(int objectCount, GameObject prefab)
+
+        void SpawnObjects(List<DataSO.ObjectData> objectVariants)
         {
             List<Vector3> positions = new();
             var (positionY, min, max) = GetSpawnData();
 
             int spawnedCount = 0;
             int attempts = 0;
-            int maxAttempts = objectCount * 10;
+            int maxAttempts = objectVariants.Count * 30;
             
-            while (spawnedCount < objectCount && attempts < maxAttempts)
+            while (spawnedCount < objectVariants.Count && attempts < maxAttempts)
             {
                 Vector3 randomPosition = GenerateRandomPosition(min, max, positionY);
     
@@ -77,7 +80,14 @@ namespace Tiger
                 attempts++;
             }
 
-            positions.ForEach(pos => Instantiate(prefab, pos, Quaternion.identity));
+            for (int i = 0; i < objectVariants.Count; i++) {
+                var spawnedObject = Instantiate(_objectPrefab, positions[i], Quaternion.identity);
+                spawnedObject.Init(objectVariants[i]);
+            }
+            // positions.ForEach(pos => {
+            //     var spawnedObject = Instantiate(_objectPrefab, pos, Quaternion.identity);
+            //     spawnedObject.Init();
+            // });
         }
         
         private (float positionY, Vector3 min, Vector3 max) GetSpawnData()

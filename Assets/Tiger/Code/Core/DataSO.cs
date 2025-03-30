@@ -25,7 +25,45 @@ namespace Tiger {
 
             [SerializedDictionary("Type", "Timings")]
             public SerializedDictionary<TransitionType, List<int>> transitions;
+            
+            public List<ObjectData> objectVariantsData;
         }
+        
+        
+        
+        [Serializable]
+        public class ObjectData {
+            public string name;
+            public Sprite sprite;
+            public ColorsEnum colorType = ColorsEnum.Normal;
+            // [SerializedDictionary] public SerializedDictionary<ColorsEnum, Color> allowedColors;
+
+            public bool IsTheSame(ObjectData other) {
+                return name == other.name && sprite == other.sprite && colorType == other.colorType;
+            }
+
+            public Color GetColor() {
+                switch (colorType) {
+                    case ColorsEnum.Normal:
+                        return Color.white;
+                    case ColorsEnum.Red:
+                        return Color.red;
+                    case ColorsEnum.Blue:
+                        return Color.blue;
+                    case ColorsEnum.Yellow:
+                        return Color.yellow;
+                }
+                return Color.white;
+            }
+        }
+        
+        [Serializable]
+        public class ColorData {
+            public ColorsEnum type;
+            public Color color;
+        }
+        
+        
 
         [Serializable]
         public class UIData {
@@ -62,4 +100,7 @@ namespace Tiger {
     
     public enum MusicBundleType { MainMenu, Gameplay }
     public enum TransitionType {Intro, Correct, Wrong, Repeat}
+    
+    public enum ColorsEnum {Normal, Red, Blue, Yellow}
+
 }

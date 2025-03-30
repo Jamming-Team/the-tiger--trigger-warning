@@ -32,13 +32,26 @@ MonoBehaviour:
     transitions:
       _serializedList:
       - Key: 0
-        Value: d0070000d0070000d0070000d0070000d0070000
+        Value: e8030000e8030000e8030000e8030000d0070000
       - Key: 1
         Value: d0070000d0070000d0070000
       - Key: 2
         Value: d0070000d0070000
       - Key: 3
         Value: d0070000d0070000d0070000
+    objectVariantsData:
+    - name: dfgdfg
+      sprite: {fileID: -596624257064684058, guid: fa0a27a19da87e1569126758df7de9ff, type: 3}
+      colorType: 0
+    - name: hgjjhg
+      sprite: {fileID: -596624257064684058, guid: fa0a27a19da87e1569126758df7de9ff, type: 3}
+      colorType: 2
+    - name: ghjjghj
+      sprite: {fileID: -596624257064684058, guid: fa0a27a19da87e1569126758df7de9ff, type: 3}
+      colorType: 1
+    - name: sdfgfdfgfdg
+      sprite: {fileID: -596624257064684058, guid: fa0a27a19da87e1569126758df7de9ff, type: 3}
+      colorType: 3
   ui:
     transitionMsgs:
       _serializedList:

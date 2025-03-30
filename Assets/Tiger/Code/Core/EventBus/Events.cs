@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Tiger {
     public interface IEvent {
     }
@@ -23,6 +25,10 @@ namespace Tiger {
 
     public struct UISetTransitionMsg : IEvent {
         public UITransitionMessageTypes type;
+    }
+
+    public struct NoteChanged : IEvent {
+        public List<NoteController.NoteItem> notes;
     }
     
     public enum UISliders {
