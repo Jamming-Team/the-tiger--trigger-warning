@@ -64,7 +64,7 @@ namespace Tiger {
 
         public void FillInitial() {
             _objectsChooser.ClearVariantsList();
-            _noteController.FillInitialNotes(_objectsChooser.GetVariantsList(_objectsCount));
+            _noteController.FillInitialNotes(_objectsChooser.GetVariantsList(_curObjCount));
         }
 
         public bool FillFinal() {
@@ -94,7 +94,7 @@ namespace Tiger {
         public void SpawnThose() {
             _clickableObjects.Clear();
             _objectSpawner.DestroyAllObjects();
-            _objectSpawner.SpawnObjects(_objectsChooser.GetVariantsList(_objectsCount));
+            _objectSpawner.SpawnObjects(_objectsChooser.GetVariantsList(data.objectsToAddOverNeeded));
         }
 
         void AdjustSelectedCollection(ClickableObject clickableObject, bool shouldAdd) {

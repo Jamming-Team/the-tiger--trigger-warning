@@ -31,6 +31,9 @@ namespace Tiger {
             public int turnsTillIncrease = 1;
             [Range(0, 6)]
             public int livesCount = 3;
+            
+            [Range(1, 5)]
+            public int objectsToAddOverNeeded = 5;
 
             [SerializedDictionary("Type", "Timings")]
             public SerializedDictionary<TransitionType, List<int>> transitions;

@@ -12,9 +12,13 @@ namespace Tiger {
 
         [HideInInspector] public DataSO.GameData data;
 
-        void Start() {
+        void Awake() {
             dropdownReference = GetComponent<TMP_Dropdown>();
             
+        }
+        
+        void Start() {
+
             GameManager.Instance.RequestData(this);
 
             switch (dropdownType) {

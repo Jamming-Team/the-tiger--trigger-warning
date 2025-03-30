@@ -2263,6 +2263,8 @@ MonoBehaviour:
   _buttons:
   - {fileID: 437440078}
   - {fileID: 2043599581}
+  _sliders: []
+  _dropdowns: []
 --- !u!1 &650532247
 GameObject:
   m_ObjectHideFlags: 0
@@ -4474,6 +4476,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _buttons:
   - {fileID: 926011485}
+  _sliders: []
+  _dropdowns: []
 --- !u!1 &1368527847
 GameObject:
   m_ObjectHideFlags: 0
@@ -6426,7 +6430,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -6665,6 +6669,8 @@ MonoBehaviour:
   _buttons:
   - {fileID: 2591064869884115556}
   - {fileID: 925737283}
+  _sliders: []
+  _dropdowns: []
 --- !u!1 &1918726495
 GameObject:
   m_ObjectHideFlags: 0
@@ -6713,6 +6719,8 @@ MonoBehaviour:
   _buttons:
   - {fileID: 208197383}
   - {fileID: 1611440135}
+  _sliders: []
+  _dropdowns: []
 --- !u!114 &1918726498
 MonoBehaviour:
   m_ObjectHideFlags: 0

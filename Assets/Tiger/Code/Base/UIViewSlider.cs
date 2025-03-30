@@ -11,8 +11,11 @@ namespace Tiger {
         
         [HideInInspector] public DataSO.AudioData data;
 
-        void Start() {
+        void Awake() {
             sliderReference = GetComponent<Slider>();
+        }
+
+        void Start() {
             
             GameManager.Instance.RequestData(this);
 

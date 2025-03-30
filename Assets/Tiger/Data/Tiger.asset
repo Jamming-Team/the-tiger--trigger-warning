@@ -33,6 +33,7 @@ MonoBehaviour:
     maxObjectsCount: 6
     turnsTillIncrease: 2
     livesCount: 3
+    objectsToAddOverNeeded: 1
     transitions:
       _serializedList:
       - Key: 0
