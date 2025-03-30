@@ -21,6 +21,10 @@ namespace Tiger {
             
         }
 
+        void OnDestroy() {
+            EventBus<NoteChanged>.Deregister(_noteChangedBinding);
+        }
+
         void FillNote(NoteChanged noteChangedEvent) {
             Debug.Log(noteChangedEvent.notes.Count);
             

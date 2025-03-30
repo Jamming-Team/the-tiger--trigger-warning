@@ -52,6 +52,18 @@ MonoBehaviour:
     - name: sdfgfdfgfdg
       sprite: {fileID: -596624257064684058, guid: fa0a27a19da87e1569126758df7de9ff, type: 3}
       colorType: 3
+    - name: ghfghfhg
+      sprite: {fileID: -596624257064684058, guid: fa0a27a19da87e1569126758df7de9ff, type: 3}
+      colorType: 3
+    - name: fghhgfghfhg
+      sprite: {fileID: -596624257064684058, guid: fa0a27a19da87e1569126758df7de9ff, type: 3}
+      colorType: 3
+    - name: fghfghfhgfhg
+      sprite: {fileID: -596624257064684058, guid: fa0a27a19da87e1569126758df7de9ff, type: 3}
+      colorType: 3
+    - name: fjgghjghjjhg
+      sprite: {fileID: -596624257064684058, guid: fa0a27a19da87e1569126758df7de9ff, type: 3}
+      colorType: 3
   ui:
     transitionMsgs:
       _serializedList:

@@ -58,7 +58,7 @@ namespace Tiger
         // }
 
 
-        void SpawnObjects(List<DataSO.ObjectData> objectVariants)
+        public void SpawnObjects(List<DataSO.ObjectData> objectVariants)
         {
             List<Vector3> positions = new();
             var (positionY, min, max) = GetSpawnData();

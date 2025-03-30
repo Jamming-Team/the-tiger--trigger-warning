@@ -5,12 +5,23 @@ namespace Tiger.Gameplay {
         protected override void OnUIButtonPressed(UIButtonPressed e) {
             Debug.Log("OnUIButtonPressed : " + e);
             switch (e.buttonType) {
-                case UIButtonTypes.Resume: {
-                    RequestTransition<GP_TransitionStateCorrect>();
-                    break;
-                }
-                case UIButtonTypes.Exit: {
-                    RequestTransition<GP_PostGameState>();
+                case UIButtonTypes.Next: {
+                    switch (_core.noteState) {
+                        case GP_SceneController.NoteStates.ViewUntilResume: {
+                            RequestTransition<GP_TransitionStateCorrect>();
+                            break;
+                        }
+                        case GP_SceneController.NoteStates.ViewUntilUpdate: {
+                            _core.noteState = GP_SceneController.NoteStates.ViewUntilResume;
+                            _core.FillInitial();
+                            break;
+                        }
+                        case GP_SceneController.NoteStates.ViewUntilExit: {
+                            RequestTransition<GP_PostGameState>();
+                            break;
+                        }
+                    }
+
                     break;
                 }
             }

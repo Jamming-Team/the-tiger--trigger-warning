@@ -45,6 +45,7 @@ namespace Tiger {
         Restart,
         Exit,
         HowToPlay,
+        Next
     }
 
     public enum UITransitionMessageTypes {

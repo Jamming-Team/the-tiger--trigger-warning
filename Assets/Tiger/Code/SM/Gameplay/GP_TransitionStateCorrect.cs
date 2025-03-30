@@ -20,36 +20,19 @@ namespace Tiger.Gameplay {
 
 
             
-            EventBus<UISetTransitionMsg>.Raise(new UISetTransitionMsg
-            {
-                type = UITransitionMessageTypes.Correct
-            });
-            
-            await Task.Delay(_transitionTimings[0]);
 
-            // Spawn here
+
+            // Hide Walls here
+
+            _core.SpawnThose();
             
-            EventBus<UISetTransitionMsg>.Raise(new UISetTransitionMsg
-            {
-                type = UITransitionMessageTypes.Remember
-            });
             
-            await Task.Delay(_transitionTimings[1]);
+            await Task.Delay(100);
+
 
             
-            EventBus<UISetTransitionMsg>.Raise(new UISetTransitionMsg
-            {
-                type = UITransitionMessageTypes.None
-            });
 
-            EventBus<FadeRequest>.Raise(new FadeRequest
-            {
-                shouldFade = true
-            });
-            
-            await Task.Delay(_transitionTimings[2]);
-
-            RequestTransition<GP_TransitionStateRepeat>();
+            RequestTransition<GP_ActionState>();
 
         }
     }

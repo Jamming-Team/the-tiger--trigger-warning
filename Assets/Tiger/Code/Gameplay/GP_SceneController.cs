@@ -6,7 +6,11 @@ namespace Tiger {
         [SerializeField] ObjectSpawner _objectSpawner;
         [SerializeField] NoteController _noteController;
         [SerializeField] int _objectsCount;
+
+        [HideInInspector] public NoteStates noteState = NoteStates.ViewUntilResume; 
         
+            
+            
         [HideInInspector]
         public DataSO.GameData data { get; set; }
         public bool freeActIsInAction => _stateMachine.currentState is Gameplay.GP_ActionState;
@@ -31,6 +35,10 @@ namespace Tiger {
             _noteController.FillInitialNotes(_objectsChooser.GetVariantsList(_objectsCount));
         }
 
+        public void SpawnThose() {
+            _objectSpawner.SpawnObjects(_objectsChooser.GetVariantsList(_objectsCount));
+        }
+
         void AdjustSelectedCollection(ClickableObject clickableObject, bool shouldAdd) {
             if (shouldAdd)
                 _clickableObjects.Add(clickableObject);
@@ -43,7 +51,11 @@ namespace Tiger {
         public void Accept(IVisitor visitor) {
             visitor.Visit(this);
         }
-
-
+        
+        public enum NoteStates {
+            ViewUntilUpdate,
+            ViewUntilResume,
+            ViewUntilExit,
+        }
     }
 }
