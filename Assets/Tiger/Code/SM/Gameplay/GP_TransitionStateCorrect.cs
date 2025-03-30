@@ -1,4 +1,4 @@
-using System.Threading.Tasks;
+using System.Collections;
 using UnityEngine;
 
 namespace Tiger.Gameplay {
@@ -10,16 +10,11 @@ namespace Tiger.Gameplay {
 
         protected override void OnEnter() {
             base.OnEnter();
-            PerformTransition();
+            StartCoroutine(PerformTransition());
         }
 
-        async void PerformTransition() {
-
-
-            
-
-
-            
+        IEnumerator PerformTransition() {
+               
 
 
             // Hide Walls here
@@ -27,13 +22,14 @@ namespace Tiger.Gameplay {
             _core.SpawnThose();
             
             
-            await Task.Delay(100);
+            yield return new WaitForSeconds(0.1f);
 
 
             
 
             RequestTransition<GP_ActionState>();
-
         }
+
+
     }
 }

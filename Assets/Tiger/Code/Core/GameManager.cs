@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Tiger {
     public class GameManager : Singleton<GameManager> {
@@ -8,14 +9,32 @@ namespace Tiger {
         
         DataManager _dataManager;
 
+        public bool isLoading = false;
+
         protected override void Awake() {
             base.Awake();
             Application.targetFrameRate = 60;
             _dataManager = new DataManager(_dataSO);
         }
 
+        
+        bool IsSceneLoaded(string sceneName)
+        {
+            for (int i = 0; i < SceneManager.sceneCount; i++)
+            {
+                Scene scene = SceneManager.GetSceneAt(i);
+                if (scene.name == sceneName && scene.isLoaded)
+                    return true;
+            }
+            return false;
+        }
+        
         public void RequestSceneLoad(string sceneName) {
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+            if (isLoading)
+                return;
+            isLoading = true;  
+            Debug.Log("Loading scene " + sceneName);
             _sceneLoader.LoadSceneGroup(sceneName);
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
         }

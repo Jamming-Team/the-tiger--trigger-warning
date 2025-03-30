@@ -1,4 +1,4 @@
-using System.Threading.Tasks;
+using System.Collections;
 using UnityEngine;
 
 namespace Tiger.Gameplay {
@@ -10,22 +10,24 @@ namespace Tiger.Gameplay {
 
         protected override void OnEnter() {
             base.OnEnter();
-            PerformTransition();
+            StartCoroutine(PerformTransition());
         }
 
-        async void PerformTransition() {
 
+        IEnumerator PerformTransition() {
+            
             EventBus<FadeRequest>.Raise(new FadeRequest
             {
                 shouldFade = false
             });
             
-            await Task.Delay(_transitionTimings[0]);
+            yield return new WaitForSeconds(2f);
+
 
             
             // Zoom Here
             
-            await Task.Delay(_transitionTimings[1]);
+
             
             
             EventBus<UISetTransitionMsg>.Raise(new UISetTransitionMsg
@@ -40,7 +42,8 @@ namespace Tiger.Gameplay {
             //     type = UITransitionMessageTypes.None
             // });
             
-            await Task.Delay(_transitionTimings[3]);
+            yield return new WaitForSeconds(1f);
+
 
             // EventBus<FadeRequest>.Raise(new FadeRequest
             // {
@@ -52,7 +55,7 @@ namespace Tiger.Gameplay {
             _core.FillInitial();
             
             RequestTransition<GP_NoteState>();
-
         }
+
     }
 }

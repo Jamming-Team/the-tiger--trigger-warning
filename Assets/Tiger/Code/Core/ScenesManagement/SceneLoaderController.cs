@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,7 +16,7 @@ namespace Tiger {
             _model.OnSceneUnloaded += sceneName => Debug.Log(" Unloaded: " + sceneName);
         }
 
-        public async Task LoadSceneGroup(string sceneName) {
+        public async void LoadSceneGroup(string sceneName) {
             if (_isLoading) return;
             _isLoading = true;
             
@@ -26,7 +25,6 @@ namespace Tiger {
             // `target` is what's coming from the event 
             progress.Progressed += target => _progress = target;
 
-            var tcs = new TaskCompletionSource<bool>();
             // void OnReadyToContinue() {
             //     _view.ReadyToContinue -= OnReadyToContinue;
             //     tcs.SetResult(true);
@@ -34,11 +32,10 @@ namespace Tiger {
             // _view.ReadyToContinue += OnReadyToContinue;
 
 
-            _view.EnableLoadingCanvas();
-            await _model.LoadScene(sceneName, progress);
+            _model.LoadScene(sceneName, progress);
             // await tcs.Task; // TODO: States in view for "PRESS ANY BUTTON"
-            _view.EnableLoadingCanvas(false);
             _isLoading = false;
+            
         }
     }
 
