@@ -6,6 +6,9 @@ namespace Tiger
     public class ClickableObject : MonoBehaviour
     {
         [SerializeField] SpriteRenderer _spriteRenderer;
+
+        [SerializeField] GameObject _onHoverObject;
+        [SerializeField] GameObject _onSelectedObject;
         
         [HideInInspector]
         public DataSO.ObjectData variantData;
@@ -18,7 +21,15 @@ namespace Tiger
             _spriteRenderer.sprite = data.sprite;
             _spriteRenderer.color = data.GetColor();
         }
-        
+
+        public void OnMouseOver() {
+            _onHoverObject.SetActive(true);
+        }
+
+        public void OnMouseExit() {
+            _onHoverObject.SetActive(false);
+        }
+
         public void ClickTrigger()
         {
             OnClick();
@@ -28,6 +39,7 @@ namespace Tiger
         {
             Debug.Log("Clickable Object Clicked");
             _isSelected = !_isSelected;
+            _onSelectedObject.SetActive(_isSelected);
             EventBus<OnItemClicked>.Raise(new OnItemClicked
             {
                 item = this,
