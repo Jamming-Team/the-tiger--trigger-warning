@@ -30,6 +30,11 @@ namespace Tiger {
     public struct NoteChanged : IEvent {
         public List<NoteController.NoteItem> notes;
     }
+
+    public struct OnItemClicked : IEvent {
+        public ClickableObject item;
+        public bool shouldAdd;
+    }
     
     public enum UISliders {
         SfxVolume,

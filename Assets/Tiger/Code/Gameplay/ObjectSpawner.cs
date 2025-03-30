@@ -33,9 +33,9 @@ namespace Tiger
         }
         // END for tests
 
-        void DestroyAllObjects()
+        public void DestroyAllObjects()
         {
-            int prefabLayer = usualItemPrefab.layer;
+            int prefabLayer = _objectPrefab.gameObject.layer;
 
             // check all objects
             foreach (GameObject obj in FindObjectsOfType<GameObject>())

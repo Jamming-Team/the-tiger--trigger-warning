@@ -15,31 +15,18 @@ namespace Tiger.Gameplay {
 
         async void PerformTransition() {
 
-            await Task.Delay(_transitionTimings[0]);
-            
-            EventBus<FadeRequest>.Raise(new FadeRequest
-            {
-                shouldFade = false
-            });
-            
-            await Task.Delay(_transitionTimings[1]);
 
+            // Show walls
             
-            EventBus<UISetTransitionMsg>.Raise(new UISetTransitionMsg
-            {
-                type = UITransitionMessageTypes.Repeat
-            });
-            
-            await Task.Delay(_transitionTimings[2]);
+            _core.FillFinal();
+
+            _core.noteState = GP_SceneController.NoteStates.ViewUntilUpdate;
+
+            await Task.Delay(100);
             
 
-            EventBus<UISetTransitionMsg>.Raise(new UISetTransitionMsg
-            {
-                type = UITransitionMessageTypes.None
-            });
-            
 
-            RequestTransition<GP_ActionState>();
+            RequestTransition<GP_NoteState>();
 
         }
     }

@@ -19,6 +19,10 @@ namespace Tiger.Gameplay {
                     RequestTransition<GP_PauseState>();
                     break;
                 }
+                case UIButtonTypes.Next: {
+                    RequestTransition<GP_TransitionStateRepeat>();
+                    break;
+                }
             }
         }
         //
