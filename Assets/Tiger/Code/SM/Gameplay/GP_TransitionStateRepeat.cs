@@ -18,9 +18,18 @@ namespace Tiger.Gameplay {
 
             // Show walls
             
-            _core.FillFinal();
+            var tisDefeat = _core.FillFinal();
 
-            _core.noteState = GP_SceneController.NoteStates.ViewUntilUpdate;
+            if (tisDefeat) {
+                EventBus<TisTheEnd>.Raise(new TisTheEnd {
+                    isVictory = false
+                });
+                _core.noteState = GP_SceneController.NoteStates.ViewUntilExit;
+            }
+            else {
+                _core.noteState = GP_SceneController.NoteStates.ViewUntilUpdate;
+            }
+
 
             await Task.Delay(100);
             

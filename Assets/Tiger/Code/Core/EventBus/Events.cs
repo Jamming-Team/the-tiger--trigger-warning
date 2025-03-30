@@ -36,6 +36,14 @@ namespace Tiger {
         public bool shouldAdd;
     }
     
+    public struct OnLivesCountChanged : IEvent {
+        public float count;
+    }
+    
+    public struct TisTheEnd : IEvent {
+        public bool isVictory;
+    }
+    
     public enum UISliders {
         SfxVolume,
         MusicVolume,

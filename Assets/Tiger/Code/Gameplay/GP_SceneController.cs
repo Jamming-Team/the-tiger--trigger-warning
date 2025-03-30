@@ -21,10 +21,18 @@ namespace Tiger {
         
         EventBinding<OnItemClicked> _onItemClickedBinding;
         
+        int _livesCount;
+        int _curObjCount;
+        int _turnsTillObjIncrease;
+        
         protected override void Start() {
 
             GameManager.Instance.RequestData(this);
             Debug.Log(data.test);
+
+            _livesCount = data.livesCount;
+            _curObjCount = data.initialObjectsCount;
+            _turnsTillObjIncrease = data.turnsTillIncrease;
             
             _stateMachine.Init(this);
 
@@ -32,6 +40,10 @@ namespace Tiger {
             
             _onItemClickedBinding = new EventBinding<OnItemClicked>(x => AdjustSelectedCollection(x.item, x.shouldAdd));
             EventBus<OnItemClicked>.Register(_onItemClickedBinding);
+            
+            EventBus<OnLivesCountChanged>.Raise(new OnLivesCountChanged {
+                count = _livesCount
+            });
 
         }
 
@@ -39,15 +51,44 @@ namespace Tiger {
             EventBus<OnItemClicked>.Deregister(_onItemClickedBinding);
         }
 
+        public bool DefeatOrNo() {
+            _livesCount--;
+            EventBus<OnLivesCountChanged>.Raise(new OnLivesCountChanged {
+                count = _livesCount
+            });
+            
+            if (_livesCount == 0)
+                return true;
+            return false;
+        }
+
         public void FillInitial() {
             _objectsChooser.ClearVariantsList();
             _noteController.FillInitialNotes(_objectsChooser.GetVariantsList(_objectsCount));
         }
 
-        public void FillFinal() { 
+        public bool FillFinal() {
+            var shouldLose = false;
             List<DataSO.ObjectData> finalObjectsData = new List<DataSO.ObjectData>();
             _clickableObjects.ForEach(x => finalObjectsData.Add(x.variantData));
-            _noteController.FillFinalNotes(finalObjectsData);
+            if (!_noteController.FillFinalNotes(finalObjectsData)) {
+                shouldLose = DefeatOrNo();
+            }
+            else {
+                _turnsTillObjIncrease--;
+                if (_turnsTillObjIncrease == 0) {
+                    if (data.maxObjectsCount < _objectsCount)
+                        EventBus<TisTheEnd>.Raise(new TisTheEnd {
+                            isVictory = true
+                        });
+                    else {
+                        _turnsTillObjIncrease = data.turnsTillIncrease;
+                        _curObjCount++;
+                    }
+                }
+            }
+            
+            return shouldLose;
         }
 
         public void SpawnThose() {
