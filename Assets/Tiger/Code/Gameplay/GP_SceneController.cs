@@ -80,8 +80,16 @@ namespace Tiger {
             _clickableObjects.ForEach(x => finalObjectsData.Add(x.variantData));
             if (!_noteController.FillFinalNotes(finalObjectsData)) {
                 shouldLose = DefeatOrNo();
+                EventBus<UISetTransitionMsg>.Raise(new UISetTransitionMsg
+                {
+                    type = UITransitionMessageTypes.Wrong
+                });
             }
             else {
+                EventBus<UISetTransitionMsg>.Raise(new UISetTransitionMsg
+                {
+                    type = UITransitionMessageTypes.Correct
+                });
                 _turnsTillObjIncrease--;
                 EventBus<GameFlowNumsChanged>.Raise(new GameFlowNumsChanged {
                     tilIncr = _turnsTillObjIncrease,

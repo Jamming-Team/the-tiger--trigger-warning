@@ -13,6 +13,10 @@ namespace Tiger.Gameplay {
                         }
                         case GP_SceneController.NoteStates.ViewUntilUpdate: {
                             _core.noteState = GP_SceneController.NoteStates.ViewUntilResume;
+                            EventBus<UISetTransitionMsg>.Raise(new UISetTransitionMsg
+                            {
+                                type = UITransitionMessageTypes.Remember
+                            });
                             _core.FillInitial();
                             break;
                         }

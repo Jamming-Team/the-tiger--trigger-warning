@@ -33,12 +33,12 @@ namespace Tiger.Gameplay {
                 type = UITransitionMessageTypes.Remember
             });
             
-            await Task.Delay(_transitionTimings[2]);
-
-            EventBus<UISetTransitionMsg>.Raise(new UISetTransitionMsg
-            {
-                type = UITransitionMessageTypes.None
-            });
+            // await Task.Delay(_transitionTimings[2]);
+            //
+            // EventBus<UISetTransitionMsg>.Raise(new UISetTransitionMsg
+            // {
+            //     type = UITransitionMessageTypes.None
+            // });
             
             await Task.Delay(_transitionTimings[3]);
 

@@ -29,6 +29,7 @@ namespace Tiger {
 
             _notifierPanelGO.SetActive(true);
             _messageText.text = data.transitionMsgs[transitionMsgEvent.type].message;
+            _messageText.color = data.transitionMsgs[transitionMsgEvent.type].textColor;
         }
 
         public void Accept(IVisitor visitor) {
