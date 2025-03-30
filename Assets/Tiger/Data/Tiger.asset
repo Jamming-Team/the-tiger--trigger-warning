@@ -31,8 +31,8 @@ MonoBehaviour:
       zoomConstraints: {x: 22.5, y: 40}
       verticalAxisConstraint: {x: 10, y: 50}
       rotationSensitivity: {x: 300, y: 200}
-    initialObjectsCount: 1
-    maxObjectsCount: 5
+    initialObjectsCount: 3
+    maxObjectsCount: 6
     turnsTillIncrease: 1
     livesCount: 3
     objectsToAddOverNeeded: 3
@@ -47,9 +47,6 @@ MonoBehaviour:
       - Key: 3
         Value: d0070000d0070000d0070000
     objectVariantsData:
-    - name: Candle
-      sprite: {fileID: -596624257064684058, guid: fa0a27a19da87e1569126758df7de9ff, type: 3}
-      colorType: 0
     - name: Box
       sprite: {fileID: 4968497141197874027, guid: 547db2a42e4b494b4a60892226c275bd, type: 3}
       colorType: 0
@@ -58,18 +55,6 @@ MonoBehaviour:
       colorType: 0
     - name: paperPile
       sprite: {fileID: 9187258793448160144, guid: 9c55a16ef5166f65fa6bdcb040ea05ab, type: 3}
-      colorType: 0
-    - name: car
-      sprite: {fileID: -8370911629351663464, guid: c55e3953929fbcebe9a93bb93886315d, type: 3}
-      colorType: 0
-    - name: toy
-      sprite: {fileID: 2758887085411406935, guid: ea9369eae0d206b20a0d0099da8a85ca, type: 3}
-      colorType: 0
-    - name: creeper
-      sprite: {fileID: 5887045465808851504, guid: 1cfac13b1fcee3996aaa4260f07705f6, type: 3}
-      colorType: 0
-    - name: cookie
-      sprite: {fileID: 8548129674067751730, guid: 38fb4693a3583575ca461047c6d85089, type: 3}
       colorType: 0
     - name: printer
       sprite: {fileID: -7285923042902591436, guid: a9010de868469cb6e9bd3dd0e247cc23, type: 3}
@@ -83,9 +68,21 @@ MonoBehaviour:
     - name: suitcase
       sprite: {fileID: -1840296373339890393, guid: da6115deed95fb215b601663317403b3, type: 3}
       colorType: 0
-    - name: suitcase
-      sprite: {fileID: -1840296373339890393, guid: da6115deed95fb215b601663317403b3, type: 3}
+    - name: coffee
+      sprite: {fileID: 4687309882487268517, guid: f0c64e322e6fc5c75ac4ee89ba48d1cb, type: 3}
       colorType: 0
+    - name: printer_red
+      sprite: {fileID: -7285923042902591436, guid: a9010de868469cb6e9bd3dd0e247cc23, type: 3}
+      colorType: 1
+    - name: suitcaseYellow
+      sprite: {fileID: -1840296373339890393, guid: da6115deed95fb215b601663317403b3, type: 3}
+      colorType: 1
+    - name: shwabra_pink
+      sprite: {fileID: -809469280468014139, guid: d26e69c3d685b5c139b73cf81030ffed, type: 3}
+      colorType: 4
+    - name: coffee_red
+      sprite: {fileID: 4687309882487268517, guid: f0c64e322e6fc5c75ac4ee89ba48d1cb, type: 3}
+      colorType: 1
   ui:
     transitionMsgs:
       _serializedList:

@@ -59,11 +59,13 @@ namespace Tiger {
                     case ColorsEnum.Normal:
                         return Color.white;
                     case ColorsEnum.Red:
-                        return Color.red;
+                        return new Color(1f, 0.54f, 0.54f);
                     case ColorsEnum.Blue:
                         return Color.blue;
                     case ColorsEnum.Yellow:
                         return Color.yellow;
+                    case ColorsEnum.Pink:
+                        return new Color(0.34f, 1f, 0.38f);
                 }
                 return Color.white;
             }
@@ -115,6 +117,6 @@ namespace Tiger {
     public enum MusicBundleType { MainMenu, Gameplay }
     public enum TransitionType {Intro, Correct, Wrong, Repeat}
     
-    public enum ColorsEnum {Normal, Red, Blue, Yellow}
+    public enum ColorsEnum {Normal, Red, Blue, Yellow, Pink}
 
 }
