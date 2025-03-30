@@ -33,6 +33,7 @@ namespace Tiger
             if (!Cursor.visible)
                 return;
             _onHoverObject.SetActive(true);
+            _onSelectedObject.SetActive(false);
             AudioManager.Instance.PlaySound(_onHoverSoundData, transform);
         }
 
@@ -42,6 +43,7 @@ namespace Tiger
 
         public void OnMouseExit() {
             _onHoverObject.SetActive(false);
+            _onSelectedObject.SetActive(_isSelected);
         }
 
         public void ClickTrigger()
